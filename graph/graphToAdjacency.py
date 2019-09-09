@@ -2,7 +2,7 @@ import os
 import random as rd
 
 count = 0
-for i in range(5, 10):
+for i in range(5, 11):
 	for j in range(0, 15):
 		count += 1
 		num = rd.randint(i, i+5)

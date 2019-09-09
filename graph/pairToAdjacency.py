@@ -17,7 +17,7 @@ data = [[0 for i in range(N+1)] for i in range(N+1)]
 #print(data)
 for r in file:
 	r = r.replace('\n', '')
-	print(r.split(' ')[:3])
+	#print(r.split(' ')[:3])
 	(i, j, k) = r.split(' ')[:3]
 	if data[int(i)][int(j)] != 0:
 		continue
