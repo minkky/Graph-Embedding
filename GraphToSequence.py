@@ -1,5 +1,7 @@
 # graph - adjacency version
 import copy as cp
+import glob
+import os
 
 def bfs(start, data):
 	adj = cp.deepcopy(data)
@@ -22,12 +24,22 @@ def bfs(start, data):
 	return sequence
 
 
-file = open('graph/datasets/graph1.txt', 'r')
-data = []
-for r in file:
-	data.append(list(map(float, r.split())))
+# sort with maked time
+files = sorted(glob.glob('graph/datasets/*'), key=os.path.getmtime)
 
-visited = [False for i in range(len(data))]
+for f in files:
+	basefile = './sequence/' + f.replace('.txt', '').split('/')[2]
+	file = open(f, 'r')
+	data = []
+	for r in file:
+		data.append(list(map(float, r.split())))
 
-for i in range(1, len(data)):
-	print('start', i, bfs(i, data))
+	visited = [False for i in range(len(data))]
+
+	for i in range(1, len(data)):
+		#print('start', i, bfs(i, data))
+		newF = open(basefile+"-"+str(i)+'.txt', 'w+')
+		for seq in bfs(i, data):
+			newF.write(str(seq) + '\n')
+		newF.close()
+	file.close()
