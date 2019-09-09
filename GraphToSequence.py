@@ -21,7 +21,8 @@ def bfs(start, data):
 			visited[i] = True
 	return sequence
 
-file = open('dataset/graph1.txt', 'r')
+
+file = open('graph/datasets/graph1.txt', 'r')
 data = []
 for r in file:
 	data.append(list(map(float, r.split())))
