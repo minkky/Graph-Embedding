@@ -1,3 +1,6 @@
 # ignore all files in the previous attempt/ and sequence directory
 previous attempt/
 sequence/
+
+# ignore all files format .txt
+*.txt
