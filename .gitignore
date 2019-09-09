@@ -1,2 +1,3 @@
-# ignore all files in the previous attempt/ directory
+# ignore all files in the previous attempt/ and sequence directory
 previous attempt/
+sequence/
