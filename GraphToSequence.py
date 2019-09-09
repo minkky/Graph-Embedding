@@ -16,7 +16,7 @@ def bfs(start, data):
 				if not (visited[i] and adj[now][i] != 0):
 					continue
 			#print(now, adj[now][i], i)
-			sequence.append((now, i, adj[now][i]))
+			sequence.append([now, i, adj[now][i]])
 			adj[now][i] = 0
 			adj[i][now] = 0
 			queue += [i]
