@@ -4,3 +4,5 @@ sequence/
 
 # ignore all files format .txt
 *.txt
+
+*.zip
