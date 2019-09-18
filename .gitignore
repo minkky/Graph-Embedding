@@ -1,10 +1,10 @@
 # ignore all files in the below directory
-#previous attempt/
+previous attempt/
 sequence/
 .ipynb_checkpoints/
 new_sequence/
 
-# ignore all files format .txt
+# ignore all files format below
 *.txt
-
 *.zip
+*.swp
