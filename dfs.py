@@ -29,11 +29,11 @@ def dfs(start, adj, sequence):
 	return sequence
 	#return sequence
 
-files = sorted(glob.glob('graph/create/groupData/*'), key=os.path.getmtime)
+files = sorted(glob.glob('graph/create/groupData1/*'), key=os.path.getmtime)
 
 for f in files:
 	#basefile = './sequence/' + f.replace('.txt', '').split('/')[2]
-	basefile = 'dfs_sequence/' + f.replace('.txt', '').split('/')[3]
+	basefile = 'new_sequence_dfs/' + f.replace('.txt', '').split('/')[3]
 	print(f)
 	file = open(f, 'r')
 	data = []

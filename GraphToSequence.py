@@ -26,11 +26,11 @@ def bfs(start, data):
 
 # sort with maked time
 #files = sorted(glob.glob('graph/datasets/*'), key=os.path.getmtime)
-files = sorted(glob.glob('graph/create/groupData/*'), key=os.path.getmtime)
+files = sorted(glob.glob('graph/create/groupData1/*'), key=os.path.getmtime)
 
 for f in files:
 	#basefile = './sequence/' + f.replace('.txt', '').split('/')[2]
-	basefile = './new_sequence/' + f.replace('.txt', '').split('/')[3]
+	basefile = './new_sequence_bfs/' + f.replace('.txt', '').split('/')[3]
 	
 	file = open(f, 'r')
 	data = []
