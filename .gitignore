@@ -3,6 +3,7 @@ previous attempt/
 sequence/
 .ipynb_checkpoints/
 new_sequence/
+models/
 
 # ignore all files format below
 *.txt
