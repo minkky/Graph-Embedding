@@ -5,7 +5,7 @@ graduation research
 generate graph and then change to adjacency matrix
 
 ## dataset visualization (tnse)
-<table>
+<table style="background-color:white;">
   <tr> 
     <th>mean squared error(mse)</th><th>categorical cross entropy + mse</th><th>kl divergence + mse</th>
   </tr>
