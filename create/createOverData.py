@@ -1,9 +1,10 @@
 import random as rd
+import copy
 from datetime import datetime
 
 dir = 'group/'
 filename = 'graph'
-read = readfile = 'represent/original'
+read = readfile = 'group/graph'
 
 def createGroupData(matrix, cases):
 	#rd.seed(rd.randint(10, 10000))
@@ -19,10 +20,10 @@ def createGroupData(matrix, cases):
 					while num == 0:
 						num = round(rd.uniform(0, 20), 2)
 					matrix[i][j] = matrix[j][i] = num
-				elif cases < 75:
+				elif cases < 55:
 					num += plus
 					matrix[i][j] = matrix[j][i] = round(num, 2)
-				elif cases < 125:
+				elif cases < 100:
 					matrix[i][j] = matrix[j][i] = round(num + rd.uniform(0, 10), 2)
 				
 
@@ -32,26 +33,17 @@ def fileWrite(matrix, count):
 			file.write(' '.join(str(i) for i in m) + "\n")
 
 count = 0
-for i in range(0, 6):	
-	read = readfile + str(i) + ".txt"
-	with open(read, 'r') as f:
-		lines = f.readlines()
-		length = len(lines)
+for i in range(125, 900, 150):
+	for j in range(i, i+25):
+		read = readfile + str(rd.randint(i-125, i-1)) +".txt"
 		matrix = []
-		for line in lines:
-			matrix.append(list(map(int, line.replace('\n', '').split(' '))))
-		#print(matrix)
-		for t in range(150):
-			if t < 125:
-				createGroupData(matrix, t)
-				fileWrite(matrix, count)
-			count += 1
-
-	'''
-	100개 생성 
-	- 20: 아예 랜덤 0-20 범위 uniform(0, 20) and while .. == 0 uniform(0,20)
-	- 60: 기준 데이터 하나 불러와 서 n배 
-		- 
-		- n 배도 
-	- 20: 
-	'''
+		with open(read, 'r') as f:
+			for line in f.readlines():
+				row = []
+				for each in list(map(float, line.split(' '))):
+					if each != 0.0:
+						row.append(round(each + rd.uniform(10, 50), 2))
+					else:
+						row.append(0)
+				matrix.append(row)
+				fileWrite(matrix, j)
