@@ -1,5 +1,5 @@
 
-test = [[0 for i in range(11)] for i in range(11)]
+test = [[0 for i in range(13)] for i in range(13)]
 maxi = -1
 while True:
 	inp = input()
@@ -9,6 +9,6 @@ while True:
 	test[a][b] = test[b][a] = 1
 	maxi = max(maxi, max(a, b))
 
-with open('represent/original0.txt', 'w') as file:
+with open('represent/original6.txt', 'w') as file:
 	for t in test[:maxi+1]:
 		file.write(' '.join(str(i) for i in t[:maxi+1]) + "\n")

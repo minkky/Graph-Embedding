@@ -6,6 +6,8 @@ new_sequence/
 models/
 model/
 first attempt/
+model_save/prev/
+model_save/prev_models
 
 # ignore all files format below
 *.txt

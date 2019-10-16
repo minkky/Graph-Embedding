@@ -33,7 +33,7 @@ def fileWrite(matrix, count):
 			file.write(' '.join(str(i) for i in m) + "\n")
 
 count = 0
-for i in range(125, 900, 150):
+for i in range(125, 1261, 210):
 	for j in range(i, i+25):
 		read = readfile + str(rd.randint(i-125, i-1)) +".txt"
 		matrix = []

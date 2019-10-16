@@ -32,7 +32,7 @@ def fileWrite(matrix, count):
 			file.write(' '.join(str(i) for i in m) + "\n")
 
 count = 0
-for i in range(0, 6):	
+for i in range(1, 7):	
 	read = readfile + str(i) + ".txt"
 	with open(read, 'r') as f:
 		lines = f.readlines()
@@ -41,7 +41,7 @@ for i in range(0, 6):
 		for line in lines:
 			matrix.append(list(map(int, line.replace('\n', '').split(' '))))
 		#print(matrix)
-		for t in range(150):
+		for t in range(210):
 			if t < 125:
 				createGroupData(matrix, t)
 				fileWrite(matrix, count)
