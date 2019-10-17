@@ -8,8 +8,10 @@ model/
 first attempt/
 model_save/prev/
 model_save/prev_models
+create/0prev/*
+create/group/*
+create/represent/*
 
 # ignore all files format below
-*.txt
 *.zip
 *.swp
