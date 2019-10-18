@@ -48,8 +48,9 @@ for_use = []
 idx = 150
 
 for i in range(0, 1080, 180):
-	names = [j for j in range(i, i+180)]		
+	names = [j for j in range(i, i+180)]
 	#idx = idx + i # condition 위한 변수 (자기 그룹 제외 나머지 두 cond)
+	'''
 	first = [0 for k in range(50)] + [1 for k in range(10)]
 	sec = [0 for k in range(30)] + [1 for k in range(10)]
 	thr = [0 for k in range(40)] + [1 for k in range(10)]
@@ -58,35 +59,39 @@ for i in range(0, 1080, 180):
 	rd.shuffle(first)
 	rd.shuffle(sec)
 	rd.shuffle(thr)
+	'''
 	rd.shuffle(names)
-	
+	print(names)
 	for index, j in enumerate(names):
-		files = glob.glob(filename+str(j)+"-*")
+		files = sorted(glob.glob(filename+str(j)+"-*"))
 		leng = len(files)
 		
 		#if choices[index] == 1:
 		#	for_use.append(j)
 		
-		if index < i + 80:
-			if index < i + 30:
+		if index < 80:
+			if index < 30:
 				use_alpha = getAlphaWith(1, leng, False)
+				#print(use_alpha)
 			else:
 				use_alpha = getAlphaWith(1, leng, True)
-		elif index < i + 130:
-			if index < i+100:
+				#print(use_alpha)
+		elif index < 130:
+			if index < 100:	
 				use_alpha = getAlphaWith(2, leng, False)
 			else:
 				use_alpha = getAlphaWith(2, leng, True)
-		elif index < i + 180:
-			if index < i+ 150:
+		elif index < 180:
+			if index < 150:
 				use_alpha = getAlphaWith(3, leng, False)
 			else:
 				use_alpha = getAlphaWith(3, leng, True)				
 		
 		for file in files:
-			print(file)
 			write_name = dir_name + file.split('/')[4]
+			#print(write_name, file)
 			writeFile(use_alpha, write_name, file)
+	
 '''
 print(for_use)
 # 각 label 생성 방법 (1, 2, 3) 가운데 방법별 10가지를 뽑아와 다른 방법 형태로 변경하여 주기
