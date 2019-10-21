@@ -17,3 +17,6 @@ model_save/prev_models/*
 # ignore all files format below
 *.zip
 *.swp
+
+datasets/del/*
+datasets/*
