@@ -39,50 +39,50 @@ def getAlphaWith(number, leng, sf):
 
 	return use_alpha
 
-filename = "../datasets/latest_seq/bfs/graph"
-dir_name = "../datasets/latest_seq/bfs-character/"
+filename = "../datasets/last_seq/bfs/graph"
+dir_name = "../datasets/last_seq/bfs-chr/"
 name = "graph"
 
 alpha = list(string.ascii_uppercase)
 for_use = []
 idx = 150
 
-for i in range(0, 1080, 180):
-	names = [j for j in range(i, i+180)]
+for i in range(0, 1260, 210):
+	names = [j for j in range(i, i+150)]
 	#idx = idx + i # condition 위한 변수 (자기 그룹 제외 나머지 두 cond)
-	'''
+
 	first = [0 for k in range(50)] + [1 for k in range(10)]
 	sec = [0 for k in range(30)] + [1 for k in range(10)]
 	thr = [0 for k in range(40)] + [1 for k in range(10)]
-	choices = first + sec + thr
-
+	
 	rd.shuffle(first)
 	rd.shuffle(sec)
 	rd.shuffle(thr)
-	'''
-	rd.shuffle(names)
-	print(names)
+	choices = first + sec + thr
+#rd.shuffle(names)
+	#print(names)
+
 	for index, j in enumerate(names):
 		files = sorted(glob.glob(filename+str(j)+"-*"))
 		leng = len(files)
 		
-		#if choices[index] == 1:
-		#	for_use.append(j)
+		if choices[index] == 1:
+			for_use.append(j)
 		
-		if index < 80:
-			if index < 30:
+		if index < 70:
+			if index < 35:
 				use_alpha = getAlphaWith(1, leng, False)
 				#print(use_alpha)
 			else:
 				use_alpha = getAlphaWith(1, leng, True)
 				#print(use_alpha)
-		elif index < 130:
-			if index < 100:	
+		elif index < 110:
+			if index < 85:	
 				use_alpha = getAlphaWith(2, leng, False)
 			else:
 				use_alpha = getAlphaWith(2, leng, True)
-		elif index < 180:
-			if index < 150:
+		elif index < 150:
+			if index < 125:
 				use_alpha = getAlphaWith(3, leng, False)
 			else:
 				use_alpha = getAlphaWith(3, leng, True)				
@@ -92,29 +92,34 @@ for i in range(0, 1080, 180):
 			#print(write_name, file)
 			writeFile(use_alpha, write_name, file)
 	
-'''
-print(for_use)
+print(for_use, len(for_use))
 # 각 label 생성 방법 (1, 2, 3) 가운데 방법별 10가지를 뽑아와 다른 방법 형태로 변경하여 주기
 gname = "graph"
 start = 150
 cnt = 0
-for i in range(0, 1051, 180):
+for i in range(0, 1260, 210):
 	index = start + i -1
 	for j in range(cnt*30, (cnt+1)*30):
 		files = glob.glob(filename + str(for_use[j]) +"-*")
+		files = sorted(files)
 		leng = len(files)
 		index += 1
 		#print(index, end=' ')
-		
-		if j % 30 < 10: # 2번 3번
-			use_alpha1 = getAlphaWith(2, leng, True)
-			use_alpha2 = getAlphaWith(3, leng, True)
+		if j % 2 == 0:
+			suf = False
+		else:
+			suf = True
+
+		if j % 30 < 10: # 2번 3번	
+			use_alpha1 = getAlphaWith(2, leng, suf)
+			use_alpha2 = getAlphaWith(3, leng, suf)
 		elif j % 30 < 20: # 1번 3번
-			use_alpha1 = getAlphaWith(1, leng, True)
-			use_alpha2 = getAlphaWith(3, leng, True)
+			use_alpha1 = getAlphaWith(1, leng, suf)
+			print(use_alpha1)
+			use_alpha2 = getAlphaWith(3, leng, suf)
 		else: # 1번 2번
-			use_alpha1 = getAlphaWith(1, leng, True)
-			use_alpha2 = getAlphaWith(2, leng, True)
+			use_alpha1 = getAlphaWith(1, leng, suf)
+			use_alpha2 = getAlphaWith(2, leng, suf)
 
 		for file in files:
 			idx = file.split('-')[1]
@@ -129,4 +134,3 @@ for i in range(0, 1051, 180):
 	cnt += 1
 		#print(index, end=' ')
 	#print()
-'''

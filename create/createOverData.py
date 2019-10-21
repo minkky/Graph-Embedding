@@ -12,10 +12,10 @@ def fileWrite(matrix, count):
 			file.write(' '.join(str(i) for i in m) + "\n")
 
 count = 0
-for i in range(145, 1080, 180):
-	for j in range(i, i+35):
+for i in range(125, 1260, 210):
+	for j in range(i, i+25):
 		#print(j, rd.randint(i-145, i-1))
-		read = readfile + str(rd.randint(i-145, i-1)) +".txt"
+		read = readfile + str(rd.randint(i-125, i-1)) +".txt"
 		
 		matrix = []
 		with open(read, 'r') as f:
