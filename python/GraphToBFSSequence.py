@@ -28,10 +28,10 @@ def bfs(start, data):
 #files = sorted(glob.glob('graph/datasets/*'), key=os.path.getmtime)
 files = sorted(glob.glob('../datasets/last_graph/*'), key=os.path.getmtime)
 
-for f in files:
-	#basefile = './sequence/' + f.replace('.txt', '').split('/')[2]
-	basefile = '../datasets/last_seq/bfs/' + f.replace('.txt', '').split('/')[3]
-	file = open(f, 'r')
+for idx in range(len(files)):
+	basefile = '../datasets/last_seq/bfs/graph' + str(idx)
+	file = open('../datasets/last_graph/graph' + str(idx) + ".txt", 'r')
+
 	data = []
 	for r in file:
 		data.append(list(map(float, r.split())))

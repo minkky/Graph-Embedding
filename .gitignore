@@ -20,4 +20,5 @@ model_save/prev_models/*
 *.swp
 
 datasets/del/*
-datasets/*
+datasets/prev/*
+

@@ -17,7 +17,7 @@ def getChangeIndex(now, R, total_cnt, del_indexes):
 	for_use = []
 	used = [0 for i in range(total_cnt)]
 	idx = random.randint(0, 5)
-	used[idx] = 1
+	#used[idx] = 1
 
 	for i in range(R):
 		cnt = 0
@@ -120,7 +120,7 @@ for mode in range(5, 9): #4
 	write_dir = 'group/group' + str(mode) + '/' + str(mode)
 	write_file = write_dir + 'graph'
 	print("**mode**")
-	for i in range(100):
+	for i in range(30):
 		use_alpha = getUseAlphaWith(mode, len(read_data), i)
 		#print('alpha', use_alpha)
 		R = random.randint(2, 4)
