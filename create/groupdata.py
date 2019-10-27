@@ -15,7 +15,8 @@ def getModiOrDelIndexes(count):
 			right = 5
 	elif case == 2:
 		right = 5
-
+	elif case == 3:
+		right = 3
 	idx = random.randint(0, right)
 	idx1 = random.randint(0, right)
 	while idx == idx1:
@@ -24,14 +25,17 @@ def getModiOrDelIndexes(count):
 
 def getUseAlphaWith(index, use_alpha, modify_R):
 	idx, idx1 = getModiOrDelIndexes(index)
-	print('idx, idx1, modiR ', idx, idx1, modify_R)
+	print(idx, 'idx, idx1, modiR ', idx, idx1, modify_R)
 	for r in range(modify_R):
 		use_alpha[modify_index[idx]] = list(string.ascii_uppercase)[random.randint(1, 24)]
 		idx = idx1
 	return use_alpha
 
 def getR():
-	arr = [0, 0, 0, 0, 1, 1, 1, 2]
+	if case == 3:
+		arr = [0, 0, 0, 1, 1, 1]
+	else:
+		arr = [0, 0, 0, 0, 1, 1, 1, 2]
 	random.shuffle(arr)
 	return random.choice(arr)
 
@@ -75,7 +79,18 @@ def getAddWeights(idx):
 		elif idx == 11:
 			value = matrix[8][11]
 		elif idx == 12:
-			value = matrix[9][12]		
+			value = matrix[9][12]
+	elif case == 3:
+		if idx == 1 or idx == 2 or idx == 3 or idx == 4:
+			value = max(matrix[idx]) - min(matrix[idx])
+		elif idx == 5:
+			value = matrix[1][5]
+		elif idx == 6:
+			value = matrix[2][6]
+		elif idx == 7:
+			value = matrix[3][7]
+		elif idx == 8:
+			value = matrix[4][8]
 	weights = round(random.uniform(value * 0.8, value * 1.2), 4)
 	return weights
 
@@ -131,17 +146,22 @@ elif case == 2:
 	del_index = [2, 5, 7, 10, 11, 12]
 	del_weight = [[1, 2], [3, 5], [4, 7], [6, 10], [8, 11], [9, 12]]
 	add_index = [2, 5, 7, 10, 11, 12, 1, 3, 4, 6, 8, 9]
+elif case == 3:
+	weight_index = [[1, 2], [1, 3], [1, 4], [1, 5], [2, 3], [2, 4], [2, 6], [3, 4], [3, 7], [4, 8]]
+	modify_index = del_indx = [5, 6, 7, 8]
+	del_weight = [[1, 5], [2, 6], [4, 8], [3, 7]]
+	add_index = [5, 6, 7, 8, 1, 2, 3, 4]
 total_cnt = len(weight_index)
 
 upper_case = ['0'] + list(string.ascii_uppercase)
 read_dir = 'represent/'
-read_file = read_dir + 'original4.txt'
+read_file = read_dir + 'original6.txt'
 read_data = []
 with open(read_file, 'r') as rf:
 	for line in rf.readlines():
 		read_data.append(list(map(float, line.split(' '))))
 
-write_dir = 'datasets/group4/4'
+write_dir = 'datasets/group6/6'
 length = len(read_data)
 count = 0
 
@@ -173,7 +193,10 @@ for i in range(150):
 		if i % 2 == 0:
 			idx = random.choice(add_index)
 		else:
-			idx = random.choice(add_index[:6])
+			if case == 3:
+				idx = random.choice(add_index[:4])
+			else:
+				idx = random.choice(add_index[:6])
 		weights = getAddWeights(idx)
 		matrix = addPaddingAt(idx, weights, matrix)
 		alpha = list(string.ascii_uppercase)[random.randint(1, 24)]

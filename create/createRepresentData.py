@@ -9,6 +9,6 @@ while True:
 	test[a][b] = test[b][a] = float(input('weight: '))
 	maxi = max(maxi, max(a, b))
 
-with open('represent/original4.txt', 'w') as file:
+with open('represent/original6.txt', 'w') as file:
 	for t in test[:maxi+1]:
 		file.write(' '.join(str(i) for i in t[:maxi+1]) + "\n")
