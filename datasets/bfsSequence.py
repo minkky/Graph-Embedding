@@ -35,9 +35,9 @@ def seqSave(filename, labels, sequences):
 #files = sorted(glob.glob('graph/datasets/*'), key=os.path.getmtime)
 files = sorted(glob.glob('./group1/*'))
 
-root_dir = './group1/group'
+root_dir = './group/group'
 save_dir = './seq/group'
-for idx in range(1, 9):
+for idx in range(1, 7):
 	dir_name = root_dir + str(idx) + "/*"
 	files = sorted(glob.glob(dir_name))
 	for file in files:

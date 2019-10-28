@@ -17,8 +17,7 @@ def getChangeIndex(now, R, total_cnt, del_indexes):
 	for_use = []
 	used = [0 for i in range(total_cnt)]
 	idx = random.randint(0, 5)
-	#used[idx] = 1
-
+	
 	for i in range(R):
 		cnt = 0
 		while used[idx] != 0 or weight_index[idx] in del_indexes:
@@ -53,24 +52,27 @@ def getModiOrDelIndexes(count):
 		idx = random.randint(0, right)
 	return idx, idx1
 
-def getUseAlphaWith(mode, length, index):
-	use_alpha = upper_case[:length]
-	R = random.choice([1, 1, 1, 2])
-	if mode == 2 or mode == 6:
-		idx, idx1 = getModiOrDelIndexes(index)
-		for r in range(R):
-			use_alpha[modify_index[idx]] = list(string.ascii_uppercase)[random.randint(1, 24)]
-			idx = idx1
-	if mode == 4 or mode == 8:
-		alpha = list(string.ascii_uppercase)[random.randint(1, 24)]
-		use_alpha += [alpha]
+def getUseAlphaWith(index, use_alpha):
+	arr = [0, 0, 0, 0, 1, 1, 1, 2]
+	random.shuffle(arr)
+	modify_R = random.choice(arr)
+	random.shuffle(arr)
+	add_R = random.choice(arr)
+	print('modi R, add R', modify_R, add_R)
+	
+	idx, idx1 = getModiOrDelIndexes(index)
+	for r in range(modify_R):
+		use_alpha[modify_index[idx]] = list(string.ascii_uppercase)[random.randint(1, 24)]
+		idx = idx1
+	
+	alpha = list(string.ascii_uppercase)[random.randint(1, 24)]
+	use_alpha += [alpha]
 	return use_alpha
 
 def getDelIndex(count):
-	R = random.choice([1, 1, 1, 2])
 	idx, idx1 = getModiOrDelIndexes(count)
 	indexes = []
-	for r in range(R):
+	for r in range(count):
 		indexes.append(del_weight[idx])
 		idx = idx1
 	return indexes
@@ -110,34 +112,47 @@ total_cnt = len(weight_index)
 
 upper_case = ['0'] + list(string.ascii_uppercase)
 read_dir = 'represent/'
-read_file = read_dir + 'original3.txt'
+read_file = read_dir + 'original1.txt'
 read_data = []
 with open(read_file, 'r') as rf:
 	for line in rf.readlines():
 		read_data.append(list(map(float, line.split(' '))))
 
-for mode in range(5, 9): #4
-	write_dir = 'group/group' + str(mode) + '/' + str(mode)
+write_dir = 'datasets/group1/1'
+count = 0
+for mode in range(1, 5): #4
 	write_file = write_dir + 'graph'
+	length = len(read_data)
 	print("**mode**")
-	for i in range(30):
-		use_alpha = getUseAlphaWith(mode, len(read_data), i)
+	for i in range(25):
 		#print('alpha', use_alpha)
-		R = random.randint(2, 4)
-		filename = write_file + str(i+1) + '.txt'
-		if mode == 3 or mode == 7:
-			del_indexes = getDelIndex(i)
+		select = random.choice([1, 1, 1, 2])
+		use_alpha = upper_case[:length]
+		if select != 1:
+			use_alpha = getUseAlphaWith(i, use_alpha)
+		print(use_alpha)		
+
+		arr = [0, 0, 0, 0, 0, 0, 1, 1, 1, 2]
+		random.shuffle(arr)
+
+		del_R = random.choice(arr)
+		print('del R : ', del_R)
+
+		filename = write_file + str(count+1) + '.txt'
+		count += 1
+		if del_R != 0:
+			del_indexes = getDelIndex(del_R)
 		else:
 			del_indexes = []
 		matrix = copy.deepcopy(read_data)
-		if mode == 4 or mode == 8:
-			if i % 2 == 0:
-				idx = random.choice(add_index)
-			else:
-				idx = random.choice(add_index[:6])
-			
-			weights = getAddWeights(idx)
-			#print(idx, weights)
-			matrix = addPaddingAt(idx, weights, matrix)
-		for_use = getChangeIndex(i, R, total_cnt, del_indexes)
+		if i % 2 == 0:
+			idx = random.choice(add_index)
+		else:
+			idx = random.choice(add_index[:6])
+		
+		weights = getAddWeights(idx)
+		#print(idx, weights)
+		matrix = addPaddingAt(idx, weights, matrix)
+		weight_R = random.randint(2, 4)
+		for_use = getChangeIndex(i, weight_R, total_cnt, del_indexes)
 		changeAndSaveMatrix(for_use, matrix)

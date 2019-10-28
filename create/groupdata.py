@@ -35,7 +35,7 @@ def getR():
 	if case == 3:
 		arr = [0, 0, 0, 1, 1, 1]
 	else:
-		arr = [0, 0, 0, 0, 1, 1, 1, 2]
+		arr = [0, 0, 0, 1, 1, 1, 2]
 	random.shuffle(arr)
 	return random.choice(arr)
 
@@ -135,6 +135,7 @@ def addPaddingAt(idx, weights, matrix):
 	return matrix
 
 case = int(input("case > "))
+selection = input("select > ")
 if case == 1:
 	weight_index = [[1, 3], [1, 4], [1, 5], [6, 9], [6, 10], [6, 11], [2, 1], [2, 7], [2, 6], [2, 8]]
 	modify_index = del_index = [3, 4, 5, 9, 10, 11, 7, 8]
@@ -155,18 +156,18 @@ total_cnt = len(weight_index)
 
 upper_case = ['0'] + list(string.ascii_uppercase)
 read_dir = 'represent/'
-read_file = read_dir + 'original6.txt'
+read_file = read_dir + 'original'+ selection +'.txt'
 read_data = []
 with open(read_file, 'r') as rf:
 	for line in rf.readlines():
 		read_data.append(list(map(float, line.split(' '))))
 
-write_dir = 'datasets/group6/6'
+write_dir = 'datasets/group'+selection+'/'+selection
 length = len(read_data)
-count = 0
+count = 30
 
 write_file = write_dir + 'graph'
-for i in range(150):
+for i in range(70):
 	count += 1
 	filename = write_file + str(count) + '.txt'
 	select = random.choice([1, 1, 1, 2])
