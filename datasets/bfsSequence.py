@@ -16,7 +16,8 @@ def bfs(start, data):
 				if not (visited[i] and adj[now][i] != 0):
 					continue
 			#print(now, adj[now][i], i)
-			sequence.append([now, i, adj[now][i]])
+			#sequence.append([now, i, adj[now][i]])
+			sequence.append([now, i, 1])
 			adj[now][i] = 0
 			adj[i][now] = 0
 			queue += [i]
@@ -33,10 +34,10 @@ def seqSave(filename, labels, sequences):
 
 # sort with maked time
 #files = sorted(glob.glob('graph/datasets/*'), key=os.path.getmtime)
-files = sorted(glob.glob('./group1/*'))
+#files = sorted(glob.glob('./group1/*'))
 
 root_dir = './group/group'
-save_dir = './seq/group'
+save_dir = './no_weight_seq/group'
 for idx in range(1, 7):
 	dir_name = root_dir + str(idx) + "/*"
 	files = sorted(glob.glob(dir_name))
