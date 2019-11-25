@@ -22,3 +22,6 @@ model_save/prev_models/*
 datasets/del/*
 datasets/prev/*
 
+#graph2vec
+graph2vec/dataset
+graph2vec/my_dataset
