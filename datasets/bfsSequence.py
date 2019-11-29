@@ -16,8 +16,8 @@ def bfs(start, data):
 				if not (visited[i] and adj[now][i] != 0):
 					continue
 			#print(now, adj[now][i], i)
-			#sequence.append([now, i, adj[now][i]])
-			sequence.append([now, i, 1])
+			sequence.append([now, i, adj[now][i]])
+			#sequence.append([now, i, 1])
 			adj[now][i] = 0
 			adj[i][now] = 0
 			queue += [i]
@@ -36,29 +36,36 @@ def seqSave(filename, labels, sequences):
 #files = sorted(glob.glob('graph/datasets/*'), key=os.path.getmtime)
 #files = sorted(glob.glob('./group1/*'))
 
-root_dir = './group/group'
-save_dir = './no_weight_seq/group'
-for idx in range(1, 7):
-	dir_name = root_dir + str(idx) + "/*"
-	files = sorted(glob.glob(dir_name))
-	for file in files:
-		print(file)
-		save_name = save_dir + str(idx) + "/" + file.split('/')[-1].replace('.txt', '')
-		with open(file, 'r') as rf:
-			lines = rf.readlines()
-			node_name = lines[0][:-1].split(' ')
-			data = []
-			for line in lines[2:]:
-				data.append(list(map(float, line[:-1].split(' '))))
-			
-		visited = [False for i in range(len(data))]
-		for i in range(1, len(data)):
-			save_filename = save_name + "-" + str(i) +".txt"
-			#print(save_filename)
-			seq = bfs(i, data)
-			if len(seq) != 0:
-				seqSave(save_filename, node_name, seq)
+root_dir = './BZR_MD'
+save_dir = './BZR_seq'
+#for idx in range(1, 7):
+#dir_name = root_dir + str(idx) + "/*"
+dir_name = root_dir + '/graph'
 
+files = len(glob.glob(root_dir + '/*'))
+print(files)
+
+for index in range(1, files+1):
+	file = dir_name + str(index) + '.txt'
+	print(file)
+	save_name = save_dir + '/graph' + str(index) 
+	print(save_name)
+	with open(file, 'r') as rf:
+		lines = rf.readlines()
+		node_name = lines[0][:-1].split(' ')
+		print(node_name)
+		data = []
+		for line in lines[2:]:
+			data.append(list(map(float, line[:-1].split(' '))))
+	
+	visited = [False for i in range(len(data))]
+	for i in range(1, len(data)):
+		save_filename = save_name + "-" + str(i) +".txt"
+		#print(save_filename)
+		seq = bfs(i, data)
+		if len(seq) != 0:
+			seqSave(save_filename, node_name, seq)
+	
 '''
 for idx in range(len(files)):
 	basefile = '../datasets/last_seq/bfs/graph' + str(idx)
