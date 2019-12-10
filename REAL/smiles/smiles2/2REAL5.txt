@@ -1,1 +1,1 @@
-C1C(C(=O)N1)(CCC(C(=O)[O-])[NH3+])O
+CN1C2=C(C=C(C=C2)Cl)C(=NC(C1=O)O)C3=CC=CC=C3Cl

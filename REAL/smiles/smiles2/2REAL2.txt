@@ -1,1 +1,1 @@
-C1C(C(=O)N1)(CCC(C(=O)O)N)O
+C1C(=O)NC2=C(C=C(C=C2)Cl)C(=N1)C3=CC=CC=C3

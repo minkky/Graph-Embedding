@@ -12,33 +12,15 @@ def writeFile(filename, content, node_labels):
 
 file = open('REAL.csv', 'r', encoding='utf-8')
 f = csv.reader(file)
-one_count = 0
-zero_count = 0
-two_count = 0
+
 for idx, line in enumerate(f):
 	if idx ==0:
 		continue
 	if len(line) == 0:
 		continue
-	smiles, _, group = line[:3]
-	'''
-	if zero_count >= 70 and one_count >= 30:
-		break
-	if zero_count >= 70 and group == '0':
-		continue
-	if one_count >= 30 and group == '1':
-		continue
-	'''
-	if group == '0':
-		zero_count += 1
-		filename = str(group) + 'REAL' + str(zero_count)
-	elif group == '1':
-		one_count += 1
-		filename = str(group) + 'REAL' + str(one_count)
-	elif group == '2':
-		two_count += 1
-		filename = str(group) + 'REAL' + str(two_count)
-	#print(zero_count, one_count)
+	name, smiles, _, group = line[:4]
+
+	filename = str(group) + 'REAL' + name.split('-')[1]
 
 	print(smiles, filename, group)
 	mol = read_smiles(str(smiles))
@@ -52,8 +34,9 @@ for idx, line in enumerate(f):
 	for ma in matrix:
 		content.append([0] + ma)
 	print()
+	
 	with open('group/smiles'+ group + '/' + filename +'.txt', 'w') as f:
 		f.write(smiles)
 	writeFile('group/' + group + '/' + filename + '.txt', content, node_labels)
-
+	
 file.close()
