@@ -1,1 +1,0 @@
-O=S(c1ccccc1O)S(=O)c1ccccc1O

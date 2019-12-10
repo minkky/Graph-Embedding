@@ -1,1 +1,0 @@
-O=C(O)Cc1ccc(SSc2ccc(CC(=O)O)cc2)cc1

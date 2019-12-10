@@ -1,1 +1,0 @@
-CC(=O)C1=C(C)C2=Cc3c(C(C)=O)c(C)c4n3[Fe-3]35(Cl)n6c(c(C)c(CCC(=O)O)c6=CC6=[N+]3C(=C4)C(C)=C6CCC(=O)O)=CC1=[N+]25

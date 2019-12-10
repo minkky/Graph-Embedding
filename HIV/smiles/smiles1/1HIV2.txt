@@ -1,1 +1,0 @@
-NNP(=S)(NN)c1ccccc1

@@ -1,1 +1,0 @@
-O=S(=O)(O)c1cc2ccc1ccc1ccc(cc1S(=O)(=O)O)nnc1ccc(ccc3ccc(cc3S(=O)(=O)O)nn2)c(S(=O)(=O)O)c1

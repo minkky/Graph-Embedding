@@ -1,1 +1,0 @@
-Nc1c(S(=O)(=O)O)cc2cc(S(=O)(=O)O)ccc2c1N=Nc1ccc(-c2ccc(N=Nc3c(N)c(S(=O)(=O)O)cc4cc(S(=O)(=O)O)ccc34)c(S(=O)(=O)O)c2)cc1
