@@ -10,8 +10,8 @@ generate graph and then change to adjacency matrix
     <th>mean squared error(mse)</th><th>categorical cross entropy + mse</th><th>kl divergence + mse</th>
   </tr>
   <tr>
-    <td><img width="270" src="./tsne_mse.png"></img></td>
-    <td><img width="270" src="./tsne_cce_mse.png"></img></td>
-    <td><img width="270" src="./tsne_kld_mse.png"></img></td>
+    <td><img width="270" src="./image/mse_tsne.png"></img></td>
+    <td><img width="270" src="./image/cce_tsne.png"></img></td>
+    <td><img width="270" src="./image/kld_tsne.png"></img></td>
   </tr>
 </table>
